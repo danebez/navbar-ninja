@@ -19,9 +19,17 @@ $(document).ready(function() {
 
     // get the current site and activate the relevant image
 
-    //iframe = $('#embedded_iframe', window.parent.document);
-    //site = iframe.attr('site');
-    site = $.url().param('site');
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    site = getParameterByName('site');
     alert(site);
 
     if (site == 'pet_heaven') {
@@ -31,7 +39,7 @@ $(document).ready(function() {
     } else if (site == 'cyber_cellar') {
         $('img#cyber_cellar').attr('src', 'img/cyber_cellar_small.png');
     } else {
-        alert('Unknown parent page!');
+        alert('Unknown site!');
     }
 
     // mouse over handlers
