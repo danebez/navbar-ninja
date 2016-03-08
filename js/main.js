@@ -26,6 +26,13 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+// direct the browser to the site clicked on, not just the iframe
+function loadSite(site) {
+    parent.window.location.href = site;
+}
+
+// jQuery
+
 $(document).ready(function() {
 
     // get the current site and activate the relevant image
@@ -78,9 +85,3 @@ $(document).ready(function() {
     });
 
 });
-
-// direct the browser to the site clicked on, not just the iframe
-
-function loadSite(site) {
-    parent.window.location.href = site;
-}
