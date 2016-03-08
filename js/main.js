@@ -19,8 +19,10 @@ $(document).ready(function() {
 
     // get the current site and activate the relevant image
 
-    iframe = $('#embedded_iframe', window.parent.document);
-    site = iframe.attr('site');
+    //iframe = $('#embedded_iframe', window.parent.document);
+    //site = iframe.attr('site');
+    site = $.url().param('site');
+    alert(site);
 
     if (site == 'pet_heaven') {
         $('img#pet_heaven').attr('src', 'img/pet_heaven_small.png');
